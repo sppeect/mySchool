@@ -1,0 +1,13 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/MySchool
+/MySchool.Api/.vs/MySchool/DesignTimeBuild
+/MySchool.Api/.vs/MySchool/v17
+/MySchool.Api/obj/Debug/net6.0
+/MySchool.Api/obj
+/MySchool.Command/obj
+/MySchool.Common/obj
+/MySchool.Domain/obj
+/MySchool.Infraestruture/obj
