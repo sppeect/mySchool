@@ -9,14 +9,14 @@ namespace MySchool.Domain.ValueObjects
 {
     public class Address : ValueObject 
     {
-        public Address(string street, string number, string neighborhood, string city, string state, string coutry)
+        public Address(string street, string number, string neighborhood, string city, string state, string country)
         {
             Street = street;
             Number = number;
             Neighborhood = neighborhood;
             City = city;
             State = state;
-            Coutry = coutry;
+            Country = country;
         }
 
         public string Street { get; set; }
@@ -24,6 +24,6 @@ namespace MySchool.Domain.ValueObjects
         public string Neighborhood { get; set; }
         public string City { get; set; }    
         public string State { get; set; }
-        public string Coutry { get; set; }
+        public string Country { get; set; }
     }
 }
