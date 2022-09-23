@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Flunt" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
@@ -15,6 +24,19 @@
     <ProjectReference Include="..\MySchool.Common\MySchool.Common.csproj" />
     <ProjectReference Include="..\MySchool.Domain\MySchool.Domain.csproj" />
     <ProjectReference Include="..\MySchool.Infraestruture\MySchool.Infraestruture.csproj" />
+    <ProjectReference Include="..\MySchool.ReadModel\MySchool.ReadModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="EndPoints\School\Handlers\" />
+    <Folder Include="EndPoints\School\Request\" />
+    <Folder Include="EndPoints\School\Response\" />
+    <Folder Include="EndPoints\Students\Handlers\" />
+    <Folder Include="EndPoints\Students\Request\" />
+    <Folder Include="EndPoints\Students\Response\" />
+    <Folder Include="EndPoints\Teacher\Handlers\" />
+    <Folder Include="EndPoints\Teacher\Request\" />
+    <Folder Include="EndPoints\Teacher\Response\" />
   </ItemGroup>
 
 </Project>

@@ -11,3 +11,10 @@
 /MySchool.Common/obj
 /MySchool.Domain/obj
 /MySchool.Infraestruture/obj
+/MySchool.Api/bin/Debug/net6.0
+/MySchool.Command/bin/Debug/net6.0
+/MySchool.Common/bin/Debug/net6.0
+/MySchool.Domain/bin/Debug/net6.0
+/MySchool.Infraestruture/bin/Debug/net6.0
+/MySchool.ReadModel/bin/Debug/net6.0
+/MySchool.ReadModel/obj
