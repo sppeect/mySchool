@@ -11,7 +11,7 @@ using MySchool.Infraestruture.Data;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["Database:Connection"]); // Banco de dados
+builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["Database:Connection"], b => b.MigrationsAssembly("MySchool.Api"));   // Banco de dados
 builder.Services.AddIdentity<IdentityUser, IdentityRole>() // Permissionamento
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -89,7 +89,6 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 });
 
 var app = builder.Build();
-
 
 
 app.UseSwagger();

@@ -9,6 +9,7 @@ namespace MySchool.Domain.Entities.School
 {
     public class Schools
     {
+        public Schools() { }
         public Schools(string name, Address address, Email email, string phone, Document document)
         {
             Name = name;

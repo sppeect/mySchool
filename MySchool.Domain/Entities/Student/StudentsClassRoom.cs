@@ -10,9 +10,10 @@ namespace MySchool.Domain.Entities.Student
 {
     public class StudentsClassRoom : Entity
     {
-        public StudentsClassRoom(int studentId, int classRoomId)
+        public StudentsClassRoom() { }
+        public StudentsClassRoom(int studentsId, int classRoomId)
         {
-            Students = new Students(studentId);
+            Students = new Students(studentsId);
             ClassRoom = new ClassRoom(classRoomId);
 
             CreatedOn = DateTime.Now;
@@ -20,7 +21,7 @@ namespace MySchool.Domain.Entities.Student
         }
 
         public int Id { get; set; }
-        public int StudentId { get; set; }
+        public int StudentsId { get; set; }
         public Students Students { get; set; }
         public int ClassRoomId { get; set; }
         public ClassRoom ClassRoom { get; set; }

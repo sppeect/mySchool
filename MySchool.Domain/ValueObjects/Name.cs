@@ -1,15 +1,11 @@
 ﻿using Flunt.Validations;
 using MySchool.Common.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MySchool.Domain.ValueObjects
 {
     public class Name : ValueObject
     {
+        public Name() { }
         public Name(string firstName, string lastName)
         {
             FullName = firstName + lastName;
@@ -23,6 +19,6 @@ namespace MySchool.Domain.ValueObjects
         }
 
         public string FullName { get; set; }
-   
+
     }
 }

@@ -10,6 +10,7 @@ namespace MySchool.Domain.Entities.Teacher
 {
     public class Teachers
     {
+        public Teachers() { }
         public Teachers(int id)
         {
             Id = id;

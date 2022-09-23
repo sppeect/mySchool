@@ -27,6 +27,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 
         builder.Ignore<Notification>();
 
+       
         #region Schools(ValueObjects)
         builder.Entity<Schools>().OwnsOne(x => x.Address)
                 .Property(x => x.Street)
@@ -131,20 +132,20 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 
         #region Teachers(ValueObjects)
      
-        builder.Entity<Students>().OwnsOne(x => x.Document)
+        builder.Entity<Teachers>().OwnsOne(x => x.Document)
                .Property(x => x.Number)
                .HasColumnName("Document")
                .IsRequired();
-        builder.Entity<Students>().OwnsOne(x => x.Document)
+        builder.Entity<Teachers>().OwnsOne(x => x.Document)
                .Property(x => x.Type)
                .HasColumnName("DocumentType")
                .IsRequired();
 
-        builder.Entity<Students>().OwnsOne(x => x.Name)
+        builder.Entity<Teachers>().OwnsOne(x => x.Name)
               .Property(x => x.FullName)
               .HasColumnName("Name")
               .IsRequired();
-        builder.Entity<Students>().OwnsOne(x => x.Email)
+        builder.Entity<Teachers>().OwnsOne(x => x.Email)
             .Property(x => x.Address)
             .HasColumnName("Email")
             .IsRequired();
@@ -158,7 +159,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
             .HaveMaxLength(50);
         config.Properties<DateTime>()
             .HaveColumnType("datetime");
-
+        
     }
 
 }

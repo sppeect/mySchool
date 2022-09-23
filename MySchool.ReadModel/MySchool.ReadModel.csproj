@@ -31,4 +31,8 @@
     <Folder Include="Teacher\Response\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MySchool.Infraestruture\MySchool.Infraestruture.csproj" />
+  </ItemGroup>
+
 </Project>
