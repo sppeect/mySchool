@@ -1,4 +1,5 @@
-﻿using MySchool.Domain.ValueObjects;
+﻿using MySchool.Common.Entities;
+using MySchool.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,13 @@ using System.Threading.Tasks;
 
 namespace MySchool.Domain.Entities.School
 {
-    public class Schools
+    public class Schools : Entity
     {
-        public Schools() { }
+        public Schools(int id)
+        {
+            Id = id;
+        }
+
         public Schools(string name, Address address, Email email, string phone, Document document)
         {
             Name = name;
@@ -17,6 +22,9 @@ namespace MySchool.Domain.Entities.School
             Email = email;
             Phone = phone;
             Document = document;
+
+            CreatedOn = DateTime.Now;
+            UpdatedOn = DateTime.Now;
         }
 
         public int Id { get; set; }

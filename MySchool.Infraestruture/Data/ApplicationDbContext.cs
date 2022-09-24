@@ -18,7 +18,10 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Students> Students { get; set; }
     public DbSet<StudentsClassRoom> StudentsClassRoom { get; set; }
     public DbSet<StudentsNotes> StudentsNotes { get; set; }
+    public DbSet<Teachers> Teachers { get; set; }
     public DbSet<TeachersClassRooms> TeachersClassRooms { get; set; }
+
+    
 
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -27,7 +30,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 
         builder.Ignore<Notification>();
 
-       
+
         #region Schools(ValueObjects)
         builder.Entity<Schools>().OwnsOne(x => x.Address)
                 .Property(x => x.Street)
@@ -118,7 +121,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
                .Property(x => x.Type)
                .HasColumnName("DocumentType")
                .IsRequired();
-       
+
         builder.Entity<Students>().OwnsOne(x => x.Name)
               .Property(x => x.FullName)
               .HasColumnName("Name")
@@ -131,7 +134,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
         #endregion
 
         #region Teachers(ValueObjects)
-     
+
         builder.Entity<Teachers>().OwnsOne(x => x.Document)
                .Property(x => x.Number)
                .HasColumnName("Document")
@@ -159,7 +162,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
             .HaveMaxLength(50);
         config.Properties<DateTime>()
             .HaveColumnType("datetime");
-        
+
     }
 
 }

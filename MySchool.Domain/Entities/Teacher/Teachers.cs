@@ -16,7 +16,7 @@ namespace MySchool.Domain.Entities.Teacher
             Id = id;
         }
 
-        public Teachers(Name name, Document document, Email email)
+        public Teachers(string firstName, string lastName, Document document, Email email)
         {
             Name = name;
             Document = document;

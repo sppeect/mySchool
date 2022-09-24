@@ -1,5 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Flunt.Validations;
+using MySchool.Common.Enums;
+using MySchool.Common.ValueObjects;
+using System;
+using System.Collections.Generic;   
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +23,8 @@ namespace MySchool.Domain.ValueObjects
                 .Requires()
                 .IsTrue(Validate(), "Document.Number", "Document Invalido")
                 );
+
+           
         }
 
         public string Number { get; private set; }
@@ -27,11 +32,11 @@ namespace MySchool.Domain.ValueObjects
 
         private bool Validate()
         {
-            if (Type == EDocumentType.CNPJ && Number.Length == 14)
+            if (Type == EDocumentType.CNPJ && Number.Length == 14) 
             {
                 return true;
             }
-            if (Type == EDocumentType.CNPJ && Number.Length == 11)
+            if(Type == EDocumentType.CPF && Number.Length == 11)
             {
                 return true;
             }

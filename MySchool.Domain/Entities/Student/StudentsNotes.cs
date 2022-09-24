@@ -8,27 +8,23 @@ using System.Threading.Tasks;
 
 namespace MySchool.Domain.Entities.Student
 {
-    public class StudentsNotes: Entity
+    public class StudentsNotes : Entity
     {
-        public StudentsNotes(decimal note, string season, int studentId, int classRoomId)
+        public StudentsNotes(decimal note, string season, int StudentsClassRoomId)
         {
             Note = note;
             Season = season;
-
-            Students = new Students(studentId);
-            ClassRoom = new ClassRoom(classRoomId);
+            StudentsClassRoom = new StudentsClassRoom(StudentsClassRoomId);
 
             CreatedOn = DateTime.Now;
             UpdatedOn = DateTime.Now;
         }
 
         public int Id { get; set; }
-        public decimal Note { get ; set; }
+        public decimal Note { get; set; }
         public string Season { get; set; }
-        public int StudentId { get; set; }
-        public Students Students { get; set; }
-        public int ClassRoomId { get; set; }
-        public ClassRoom ClassRoom { get; set; }
+        public int StudentsClassRoomId { get; set; }
+        public StudentsClassRoom StudentsClassRoom { get; set; }
 
     }
 }

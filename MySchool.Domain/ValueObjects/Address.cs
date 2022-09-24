@@ -17,16 +17,18 @@ namespace MySchool.Domain.ValueObjects
 
             AddNotifications(new Contract<Address>()
                 .Requires()
-                .IsLowerOrEqualsThan(Street, 3, "Address.Street", "A rua deve conter pelo menos 3 caracters")
+                .IsLowerOrEqualsThan(Street, 3, "Address.Street", "A rua deve conter pelo o menos 3 caracteres")
+                .IsLowerOrEqualsThan(Number, 1, "Address.Number", "O numero deve conter pelo o menos 1 caracteres")
+                .IsLowerOrEqualsThan(Neighborhood, 3, "Address.Neighborhood", "O Bairro deve conter pelo o menos 3 caracteres")
                 );
         }
 
-        public string Street { get; private set; }
-        public string Number { get; private set; }
-        public string Neighborhood { get; private set; }
-        public string City { get; private set; }
-        public string State { get; private set; }
-        public string Country { get; private set; }
-        public string ZipCode { get; private set; }
+        public string Street { get; set; }
+        public string Number { get; set; }
+        public string Neighborhood { get; set; }
+        public string City { get; set; }    
+        public string State { get; set; }
+        public string Country { get; set; }
+        public string ZipCode { get; set; }
     }
 }
