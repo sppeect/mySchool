@@ -14,7 +14,7 @@ namespace MySchool.Domain.Entities.Student
             Id = id;
         }
 
-        public StudentsClassRoom(int studentId, int classRoomId)
+        public StudentsClassRoom(int studentsId, int classRoomId)
         {
             Students = new Students(studentsId);
             ClassRoom = new ClassRoom(classRoomId);

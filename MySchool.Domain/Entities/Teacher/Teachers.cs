@@ -18,7 +18,7 @@ namespace MySchool.Domain.Entities.Teacher
 
         public Teachers(string firstName, string lastName, Document document, Email email)
         {
-            Name = name;
+            Name = new Name(firstName, lastName);
             Document = document;
             Email = email;
         }
