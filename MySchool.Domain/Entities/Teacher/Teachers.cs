@@ -15,7 +15,7 @@ namespace MySchool.Domain.Entities.Teacher
             Id = id;
         }
 
-        public Teachers(string firstName, string lastName, string document, string email)
+        public Teachers(string firstName, string lastName, Document document, Email email)
         {
             Name = new Name(firstName, lastName);
             Document = document;
@@ -24,8 +24,8 @@ namespace MySchool.Domain.Entities.Teacher
 
         public int Id { get; set; }
         public Name Name { get; set; }
-        public string Document { get; set; }
-        public string Email { get; set; }
+        public Document Document { get; set; }
+        public Email Email { get; set; }
         
 
     }

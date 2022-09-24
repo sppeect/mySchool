@@ -15,7 +15,7 @@ namespace MySchool.Domain.Entities.School
             Id = id;
         }
 
-        public Schools(string name, Address address, string email, string phone, string document)
+        public Schools(string name, Address address, Email email, string phone, Document document)
         {
             Name = name;
             Address = address;
@@ -30,8 +30,8 @@ namespace MySchool.Domain.Entities.School
         public int Id { get; set; }
         public string Name { get; set; }
         public Address Address { get; set; }
-        public string Email { get; set; }
+        public Email Email { get; set; }
         public string Phone { get; set; }
-        public string Document { get; set; }
+        public Document Document { get; set; }
     }
 }

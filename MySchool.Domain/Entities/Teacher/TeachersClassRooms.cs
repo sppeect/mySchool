@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MySchool.Domain.Entities.Teacher
 {
-    public class TeacherClassRooms
+    public class TeachersClassRooms
     {
-        public TeacherClassRooms(int teacherId, int classRoomId)
+        public TeachersClassRooms(int teacherId, int classRoomId)
         {
             Teachers = new Teachers(teacherId);
             ClassRoom = new ClassRoom(classRoomId);

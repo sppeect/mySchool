@@ -14,13 +14,13 @@ namespace MySchool.Domain.Entities.School
             Id = id;
         }
 
-        public ClassRoom(string name, int typesId, DateTime starDate, DateTime endDate, int schoolId)
+        public ClassRoom(string name, ClassTypes types, DateTime starDate, DateTime endDate, int schoolId, Schools schools)
         {
             Name = name;
-            Types = new ClassTypes(typesId);
+            Types = types;
             StarDate = starDate;
             EndDate = endDate;
-            Schools = new Schools(schoolId);
+            Schools = schools;
 
             CreatedOn = DateTime.Now;
             UpdatedOn = DateTime.Now;
@@ -28,7 +28,7 @@ namespace MySchool.Domain.Entities.School
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public int TypesId { get; set; }
+        public int TypesName { get; set; }
         public ClassTypes Types { get; set; }
         public DateTime StarDate { get; set; }
         public DateTime EndDate { get; set; }

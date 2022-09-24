@@ -1,4 +1,5 @@
-﻿using MySchool.Common.ValueObjects;
+﻿using Flunt.Validations;
+using MySchool.Common.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,18 @@ namespace MySchool.Domain.ValueObjects
     {
         public Name(string firstName, string lastName)
         {
-            FirstName = firstName;
-            LastName = lastName;
-        }
+            FullName = firstName + " " + lastName;
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; } 
+            AddNotifications(new Contract<Name>()
+                .Requires()
+                .IsNotNull(firstName, "Name.firstName")
+                .IsNotNull(lastName, "Name.LastName")
+                .IsLowerOrEqualsThan(firstName, 3, "Name.FirstName", "Nome deve conter pelo menos 3 Caracters")
+                .IsLowerOrEqualsThan(lastName, 3, "Name.LastName", "Sobrenome deve conter pelo menos 3 Caracters")
+                .IsGreaterOrEqualsThan(FullName, 40, "Name.FullName", "Nome deve conter no maximo 40 Caracters")
+                );
+        }
+        public string FullName { get; set; }
+
     }
 }
