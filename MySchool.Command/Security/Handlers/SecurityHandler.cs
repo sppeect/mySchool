@@ -49,7 +49,7 @@ namespace MySchool.Command.Security.Handlers
             };
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            return Results.Ok(new { token = tokenHandler.WriteToken(token), name = claimName, companyId = claimCompanyId });
+            return Results.Ok(new { token = tokenHandler.WriteToken(token) });
         }
     }
 }

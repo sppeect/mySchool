@@ -7,6 +7,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MySchool.Api.EndPoints.Security;
+using MySchool.Api.EndPoints.Users;
 using MySchool.Infraestruture.Data;
 using System.Text;
 
@@ -123,6 +124,10 @@ app.UseAuthorization();
 app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle).WithTags("Token API");
 #endregion
 
+#region Users
+app.MapMethods(UsersPost.Template, UsersPost.Methods, UsersPost.Handle).WithTags("Users");
+app.MapMethods(UsersGetAll.Template, UsersGetAll.Methods, UsersGetAll.Handle).WithTags("Users");
+#endregion
 
 
 

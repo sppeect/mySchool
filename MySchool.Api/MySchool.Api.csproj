@@ -39,15 +39,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EndPoints\School\Handlers\" />
-    <Folder Include="EndPoints\School\Request\" />
-    <Folder Include="EndPoints\School\Response\" />
-    <Folder Include="EndPoints\Students\Handlers\" />
-    <Folder Include="EndPoints\Students\Request\" />
-    <Folder Include="EndPoints\Students\Response\" />
-    <Folder Include="EndPoints\Teacher\Handlers\" />
-    <Folder Include="EndPoints\Teacher\Request\" />
-    <Folder Include="EndPoints\Teacher\Response\" />
+    <Folder Include="EndPoints\School\" />
+    <Folder Include="EndPoints\Students\" />
+    <Folder Include="EndPoints\Teacher\" />
   </ItemGroup>
 
 </Project>

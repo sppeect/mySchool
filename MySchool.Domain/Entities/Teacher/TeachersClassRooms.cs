@@ -9,14 +9,14 @@ namespace MySchool.Domain.Entities.Teacher
 {
     public class TeachersClassRooms
     {
-        public TeachersClassRooms(int teacherId, int classRoomId)
+        public TeachersClassRooms(int teachersId, int classRoomId)
         {
-            Teachers = new Teachers(teacherId);
+            Teachers = new Teachers(teachersId);
             ClassRoom = new ClassRoom(classRoomId);
         }
 
         public int Id { get; set; }
-        public int TeacherId { get; set; }
+        public int TeachersId { get; set; }
         public Teachers Teachers { get; set; }
         public int ClassRoomId { get; set; }
         public ClassRoom ClassRoom { get; set; }

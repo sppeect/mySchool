@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MySchool.Api.Migrations
 {
-    public partial class firstMigration : Migration
+    public partial class firstMigrate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,7 +33,7 @@ namespace MySchool.Api.Migrations
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", maxLength: int.MaxValue, nullable: true),
                     SecurityStamp = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     PhoneNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
@@ -78,7 +78,10 @@ namespace MySchool.Api.Migrations
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Document = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    DocumentType = table.Column<int>(type: "int", nullable: false)
+                    DocumentType = table.Column<int>(type: "int", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -178,13 +181,15 @@ namespace MySchool.Api.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction,
+                        onUpdate: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction,
+                        onUpdate: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,10 +219,12 @@ namespace MySchool.Api.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TypesName = table.Column<int>(type: "int", nullable: false),
                     TypesId = table.Column<int>(type: "int", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    StarDate = table.Column<DateTime>(type: "datetime", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime", nullable: false),
                     SchoolId = table.Column<int>(type: "int", nullable: false),
+                    SchoolsId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime", nullable: true)
@@ -230,13 +237,15 @@ namespace MySchool.Api.Migrations
                         column: x => x.TypesId,
                         principalTable: "ClassTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction,
+                        onUpdate: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_ClassRoom_Schools_SchoolId",
-                        column: x => x.SchoolId,
+                        name: "FK_ClassRoom_Schools_SchoolsId",
+                        column: x => x.SchoolsId,
                         principalTable: "Schools",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction,
+                        onUpdate: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -279,7 +288,6 @@ namespace MySchool.Api.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TeacherId = table.Column<int>(type: "int", nullable: false),
                     TeachersId = table.Column<int>(type: "int", nullable: false),
                     ClassRoomId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -307,10 +315,7 @@ namespace MySchool.Api.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StudentsId = table.Column<int>(type: "int", nullable: false),
-                    ClassRoomId = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DeletedOn = table.Column<DateTime>(type: "datetime", nullable: true)
+                    ClassRoomId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -320,14 +325,13 @@ namespace MySchool.Api.Migrations
                         column: x => x.ClassRoomId,
                         principalTable: "ClassRoom",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_StudentsClassRoom_Students_StudentsId",
                         column: x => x.StudentsId,
                         principalTable: "Students",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade,
-                        onUpdate: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -337,10 +341,8 @@ namespace MySchool.Api.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Note = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Season = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    StudentId = table.Column<int>(type: "int", nullable: false),
-                    StudentsId = table.Column<int>(type: "int", nullable: false),
-                    ClassRoomId = table.Column<int>(type: "int", nullable: false),
+                    Season = table.Column<int>(type: "int", nullable: false),
+                    StudentsClassRoomId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime", nullable: true)
@@ -349,18 +351,11 @@ namespace MySchool.Api.Migrations
                 {
                     table.PrimaryKey("PK_StudentsNotes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StudentsNotes_ClassRoom_ClassRoomId",
-                        column: x => x.ClassRoomId,
-                        principalTable: "ClassRoom",
+                        name: "FK_StudentsNotes_StudentsClassRoom_StudentsClassRoomId",
+                        column: x => x.StudentsClassRoomId,
+                        principalTable: "StudentsClassRoom",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_StudentsNotes_Students_StudentsId",
-                        column: x => x.StudentsId,
-                        principalTable: "Students",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction,
-                        onUpdate: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
@@ -403,9 +398,9 @@ namespace MySchool.Api.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClassRoom_SchoolId",
+                name: "IX_ClassRoom_SchoolsId",
                 table: "ClassRoom",
-                column: "SchoolId");
+                column: "SchoolsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClassRoom_TypesId",
@@ -428,14 +423,9 @@ namespace MySchool.Api.Migrations
                 column: "StudentsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentsNotes_ClassRoomId",
+                name: "IX_StudentsNotes_StudentsClassRoomId",
                 table: "StudentsNotes",
-                column: "ClassRoomId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_StudentsNotes_StudentsId",
-                table: "StudentsNotes",
-                column: "StudentsId");
+                column: "StudentsClassRoomId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TeachersClassRooms_ClassRoomId",
@@ -466,9 +456,6 @@ namespace MySchool.Api.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "StudentsClassRoom");
-
-            migrationBuilder.DropTable(
                 name: "StudentsNotes");
 
             migrationBuilder.DropTable(
@@ -481,13 +468,16 @@ namespace MySchool.Api.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Students");
+                name: "StudentsClassRoom");
+
+            migrationBuilder.DropTable(
+                name: "Teachers");
 
             migrationBuilder.DropTable(
                 name: "ClassRoom");
 
             migrationBuilder.DropTable(
-                name: "Teachers");
+                name: "Students");
 
             migrationBuilder.DropTable(
                 name: "ClassTypes");

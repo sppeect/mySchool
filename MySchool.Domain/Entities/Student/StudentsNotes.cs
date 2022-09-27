@@ -1,4 +1,5 @@
 ﻿using MySchool.Common.Entities;
+using MySchool.Common.Enums;
 using MySchool.Domain.Entities.School;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace MySchool.Domain.Entities.Student
 {
     public class StudentsNotes : Entity
     {
-        public StudentsNotes(decimal note, string season, int StudentsClassRoomId)
+        public StudentsNotes(decimal note, ESeasons season, int StudentsClassRoomId)
         {
             Note = note;
             Season = season;
@@ -22,7 +23,7 @@ namespace MySchool.Domain.Entities.Student
 
         public int Id { get; set; }
         public decimal Note { get; set; }
-        public string Season { get; set; }
+        public ESeasons Season { get; set; }
         public int StudentsClassRoomId { get; set; }
         public StudentsClassRoom StudentsClassRoom { get; set; }
 

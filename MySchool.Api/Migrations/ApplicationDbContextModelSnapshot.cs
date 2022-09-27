@@ -268,10 +268,16 @@ namespace MySchool.Api.Migrations
                     b.Property<int>("SchoolId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<int>("SchoolsId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StarDate")
                         .HasColumnType("datetime");
 
                     b.Property<int>("TypesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypesName")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedOn")
@@ -279,7 +285,7 @@ namespace MySchool.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SchoolId");
+                    b.HasIndex("SchoolsId");
 
                     b.HasIndex("TypesId");
 
@@ -312,6 +318,12 @@ namespace MySchool.Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -321,6 +333,9 @@ namespace MySchool.Api.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
@@ -370,17 +385,8 @@ namespace MySchool.Api.Migrations
                     b.Property<int>("ClassRoomId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime");
-
                     b.Property<int>("StudentsId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
@@ -399,9 +405,6 @@ namespace MySchool.Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ClassRoomId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime");
 
@@ -411,15 +414,10 @@ namespace MySchool.Api.Migrations
                     b.Property<decimal>("Note")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Season")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("StudentId")
+                    b.Property<int>("Season")
                         .HasColumnType("int");
 
-                    b.Property<int>("StudentsId")
+                    b.Property<int>("StudentsClassRoomId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedOn")
@@ -427,9 +425,7 @@ namespace MySchool.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClassRoomId");
-
-                    b.HasIndex("StudentsId");
+                    b.HasIndex("StudentsClassRoomId");
 
                     b.ToTable("StudentsNotes");
                 });
@@ -456,9 +452,6 @@ namespace MySchool.Api.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("ClassRoomId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
                     b.Property<int>("TeachersId")
@@ -526,9 +519,9 @@ namespace MySchool.Api.Migrations
 
             modelBuilder.Entity("MySchool.Domain.Entities.School.ClassRoom", b =>
                 {
-                    b.HasOne("MySchool.Domain.Entities.School.Schools", "School")
+                    b.HasOne("MySchool.Domain.Entities.School.Schools", "Schools")
                         .WithMany()
-                        .HasForeignKey("SchoolId")
+                        .HasForeignKey("SchoolsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -538,7 +531,7 @@ namespace MySchool.Api.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("School");
+                    b.Navigation("Schools");
 
                     b.Navigation("Types");
                 });
@@ -798,21 +791,13 @@ namespace MySchool.Api.Migrations
 
             modelBuilder.Entity("MySchool.Domain.Entities.Student.StudentsNotes", b =>
                 {
-                    b.HasOne("MySchool.Domain.Entities.School.ClassRoom", "ClassRoom")
+                    b.HasOne("MySchool.Domain.Entities.Student.StudentsClassRoom", "StudentsClassRoom")
                         .WithMany()
-                        .HasForeignKey("ClassRoomId")
+                        .HasForeignKey("StudentsClassRoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MySchool.Domain.Entities.Student.Students", "Students")
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ClassRoom");
-
-                    b.Navigation("Students");
+                    b.Navigation("StudentsClassRoom");
                 });
 
             modelBuilder.Entity("MySchool.Domain.Entities.Teacher.Teachers", b =>
