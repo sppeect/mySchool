@@ -33,5 +33,21 @@ namespace MySchool.Domain.Entities.School
         public Email Email { get; set; }
         public string Phone { get; set; }
         public Document Document { get; set; }
+
+
+        public void Update(string name, Address address, Email email, string phone, Document document)
+        {
+            Name = name;
+            Address = address;
+            Email = email;
+            Phone = phone;
+            Document = document;
+
+            UpdatedOn = DateTime.Now;
+        }
+        public void Delete()
+        {
+            DeletedOn = DateTime.Now;
+        }
     }
 }

@@ -20,9 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="School\Handlers\" />
-    <Folder Include="School\Request\" />
-    <Folder Include="School\Response\" />
     <Folder Include="Security\Response\" />
     <Folder Include="Students\Handlers\" />
     <Folder Include="Students\Request\" />

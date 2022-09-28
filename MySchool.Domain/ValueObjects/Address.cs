@@ -17,9 +17,9 @@ namespace MySchool.Domain.ValueObjects
 
             AddNotifications(new Contract<Address>()
                 .Requires()
-                .IsLowerOrEqualsThan(Street, 3, "Address.Street", "A rua deve conter pelo o menos 3 caracteres")
-                .IsLowerOrEqualsThan(Number, 1, "Address.Number", "O numero deve conter pelo o menos 1 caracteres")
-                .IsLowerOrEqualsThan(Neighborhood, 3, "Address.Neighborhood", "O Bairro deve conter pelo o menos 3 caracteres")
+                .IsGreaterOrEqualsThan(Street, 3, "Address.Street", "A rua deve conter pelo o menos 3 caracteres")
+                .IsGreaterOrEqualsThan(Number, 1, "Address.Number", "O numero deve conter pelo o menos 1 caracteres")
+                .IsGreaterOrEqualsThan(Neighborhood, 3, "Address.Neighborhood", "O Bairro deve conter pelo o menos 3 caracteres")
                 );
         }
 

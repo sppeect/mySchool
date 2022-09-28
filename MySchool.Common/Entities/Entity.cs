@@ -1,4 +1,5 @@
 ﻿using Flunt.Notifications;
+using Flunt.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,4 +14,6 @@ namespace MySchool.Common.Entities
         public DateTime? UpdatedOn { get; set; }
         public DateTime? DeletedOn { get; set; }
     }
+
+  
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MySchool.Api.EndPoints.School;
 using MySchool.Api.EndPoints.Security;
 using MySchool.Api.EndPoints.Users;
 using MySchool.Infraestruture.Data;
@@ -127,6 +128,15 @@ app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle).WithTags
 #region Users
 app.MapMethods(UsersPost.Template, UsersPost.Methods, UsersPost.Handle).WithTags("Users");
 app.MapMethods(UsersGetAll.Template, UsersGetAll.Methods, UsersGetAll.Handle).WithTags("Users");
+//app.MapMethods(UsersPut.Template, UsersPut.Methods, UsersPut.Handle).WithTags("Users");
+#endregion
+
+#region School
+app.MapMethods(SchoolPost.Template, SchoolPost.Methods, SchoolPost.Handle).WithTags("Schools");
+app.MapMethods(SchoolGetAll.Template, SchoolGetAll.Methods, SchoolGetAll.Handle).WithTags("Schools");
+app.MapMethods(SchoolGetById.Template, SchoolGetById.Methods, SchoolGetById.Handle).WithTags("Schools");
+app.MapMethods(SchoolPut.Template, SchoolPut.Methods, SchoolPut.Handle).WithTags("Schools");
+app.MapMethods(SchoolDelete.Template, SchoolDelete.Methods, SchoolDelete.Handle).WithTags("Schools");
 #endregion
 
 

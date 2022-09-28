@@ -19,9 +19,9 @@ namespace MySchool.Domain.ValueObjects
                 .Requires()
                 .IsNotNull(firstName, "Name.firstName")
                 .IsNotNull(lastName, "Name.LastName")
-                .IsLowerOrEqualsThan(firstName, 3, "Name.FirstName", "Nome deve conter pelo menos 3 Caracters")
-                .IsLowerOrEqualsThan(lastName, 3, "Name.LastName", "Sobrenome deve conter pelo menos 3 Caracters")
-                .IsGreaterOrEqualsThan(FullName, 40, "Name.FullName", "Nome deve conter no maximo 40 Caracters")
+                .IsGreaterOrEqualsThan(firstName, 3, "Name.FirstName", "Nome deve conter pelo menos 3 Caracters")
+                .IsGreaterOrEqualsThan(lastName, 3, "Name.LastName", "Sobrenome deve conter pelo menos 3 Caracters")
+                .IsLowerOrEqualsThan(FullName, 40, "Name.FullName", "Nome deve conter no maximo 40 Caracters")
                 );
         }
 
