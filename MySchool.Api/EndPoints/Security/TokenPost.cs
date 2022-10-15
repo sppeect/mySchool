@@ -15,4 +15,5 @@ public class TokenPost
     public static string Template => "v1/token";
     public static string[] Methods => new string[] { HttpMethod.Post.ToString() };
     public static Delegate Handle => SecurityHandler.Action;
+
 }
