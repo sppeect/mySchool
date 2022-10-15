@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
+    font-family: "Inter", sans-serif;
 }
 
 body{
@@ -16,8 +17,8 @@ body{
 // FONTS //
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-
-// Module - Login - BEGIN //
+@import "shared/navbar";
+@import "shared/header";
+//
 @import "modules/login";
-
-// Module - Login - END //
+@import "modules/home";

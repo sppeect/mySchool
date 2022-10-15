@@ -21,14 +21,16 @@ namespace MySchool.Command.Security.Handlers
         {
             var user = userManager.FindByEmailAsync(loginRequest.Email).Result;
             if (user == null)
-                Results.BadRequest();
-            if (!userManager.CheckPasswordAsync(user, loginRequest.Password).Result)
-                Results.BadRequest();
+                return Results.BadRequest("Usuario não encontrado!");
+
+            var checkPw = userManager.CheckPasswordAsync(user, loginRequest.Password).Result;
+            if (!checkPw)
+                return Results.BadRequest("Senha Invalida");
 
             var claims = userManager.GetClaimsAsync(user).Result;
 
-            var claimName = claims.ToList().FindAll(x => x.Type == "Name").Select(c => c.Value);
-            var claimCompanyId = claims.ToList().FindAll(x => x.Type == "CompanyId").Select(c => c.Value);
+            var claimName = claims.ToList().FindAll(x => x.Type == "Nome").Select(c => c.Value);
+            //var claimCompanyId = claims.ToList().FindAll(x => x.Type == "CompanyId").Select(c => c.Value);
 
 
             var subject = new ClaimsIdentity(new Claim[]
@@ -49,7 +51,7 @@ namespace MySchool.Command.Security.Handlers
             };
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            return Results.Ok(new { token = tokenHandler.WriteToken(token) });
+            return Results.Ok(new { token = tokenHandler.WriteToken(token), userName = claimName     });
         }
     }
 }

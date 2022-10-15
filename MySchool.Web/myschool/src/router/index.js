@@ -1,8 +1,9 @@
 /* eslint-disable */
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import { store } from "@/store";
-import login from "../modules/account/views/index"
+import login from "../modules/account/views/index";
+import home from "../modules/home/views/index";
 
 const expired = (auth) => {
   let currentDate = moment(moment.utc(moment.utc().toDate()).toDate()).format();
@@ -25,7 +26,8 @@ const ifAuthenticated = (to, from, next) => {
     }
 
     if (auth.isAuthenticated) {
-      next();
+      next("/success");
+      console.log("Success");
 
       return;
     }
@@ -39,10 +41,22 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path:"/success",
+    redirect:"/home"
+  },
+
+  {
     path: '/',
     name: 'login',
     component: login
   },
+  {
+    path: '/home',
+    name: 'home',
+    component: home
+  },
+
+
   
 ]
 

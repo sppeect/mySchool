@@ -2,7 +2,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import account from "../modules/account/store";
+import auth from "../modules/account/store";
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
@@ -11,7 +11,7 @@ export const store = new Vuex.Store({
   },
   
   modules: {
-    account: account,
+    auth: auth,
   },
 
   mutations: {
