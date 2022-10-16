@@ -11,7 +11,6 @@ namespace MySchool.ReadModel.Users.Handlers
 {
     public class UserReadHandler
     {
-        [AllowAnonymous]
         public static async Task<IResult> ActionGetAll(IConfiguration configuration)
         {
             var query = @"SELECT

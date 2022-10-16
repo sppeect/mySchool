@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MySchool.Api.EndPoints.School;
 using MySchool.Api.EndPoints.Security;
+using MySchool.Api.EndPoints.Teacher;
 using MySchool.Api.EndPoints.Users;
 using MySchool.Infraestruture.Data;
 using System.Text;
@@ -122,21 +123,29 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 #region Token
-app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle).WithTags("Token API");
+app.MapMethods(TokenPost.Template, TokenPost.Methods, TokenPost.Handle).AllowAnonymous().WithTags("Token API");
 #endregion
 
 #region Users
-app.MapMethods(UsersPost.Template, UsersPost.Methods, UsersPost.Handle).WithTags("Users");
-app.MapMethods(UsersGetAll.Template, UsersGetAll.Methods, UsersGetAll.Handle).WithTags("Users");
+app.MapMethods(UsersPost.Template, UsersPost.Methods, UsersPost.Handle).AllowAnonymous().WithTags("Users");
+app.MapMethods(UsersGetAll.Template, UsersGetAll.Methods, UsersGetAll.Handle).RequireAuthorization().WithTags("Users");
 //app.MapMethods(UsersPut.Template, UsersPut.Methods, UsersPut.Handle).WithTags("Users");
 #endregion
 
 #region School
-app.MapMethods(SchoolPost.Template, SchoolPost.Methods, SchoolPost.Handle).WithTags("Schools");
-app.MapMethods(SchoolGetAll.Template, SchoolGetAll.Methods, SchoolGetAll.Handle).WithTags("Schools");
-app.MapMethods(SchoolGetById.Template, SchoolGetById.Methods, SchoolGetById.Handle).WithTags("Schools");
-app.MapMethods(SchoolPut.Template, SchoolPut.Methods, SchoolPut.Handle).WithTags("Schools");
-app.MapMethods(SchoolDelete.Template, SchoolDelete.Methods, SchoolDelete.Handle).WithTags("Schools");
+app.MapMethods(SchoolPost.Template, SchoolPost.Methods, SchoolPost.Handle).RequireAuthorization().WithTags("Schools");
+app.MapMethods(SchoolGetAll.Template, SchoolGetAll.Methods, SchoolGetAll.Handle).RequireAuthorization().WithTags("Schools");
+app.MapMethods(SchoolGetById.Template, SchoolGetById.Methods, SchoolGetById.Handle).RequireAuthorization().WithTags("Schools");
+app.MapMethods(SchoolPut.Template, SchoolPut.Methods, SchoolPut.Handle).RequireAuthorization().WithTags("Schools");
+app.MapMethods(SchoolDelete.Template, SchoolDelete.Methods, SchoolDelete.Handle).RequireAuthorization().WithTags("Schools");
+#endregion
+
+#region Teacher
+app.MapMethods(TeacherPost.Template, TeacherPost.Methods, TeacherPost.Handle).RequireAuthorization().WithTags("Teacher");
+app.MapMethods(TeacherGetAll.Template, TeacherGetAll.Methods, TeacherGetAll.Handle).RequireAuthorization().WithTags("Teacher");
+app.MapMethods(TeacherGetById.Template, TeacherGetById.Methods, TeacherGetById.Handle).RequireAuthorization().WithTags("Teacher");
+app.MapMethods(TeacherPut.Template, TeacherPut.Methods, TeacherPut.Handle).RequireAuthorization().WithTags("Teacher");
+app.MapMethods(TeacherDelete.Template, TeacherDelete.Methods, TeacherDelete.Handle).RequireAuthorization().WithTags("Teacher");
 #endregion
 
 
