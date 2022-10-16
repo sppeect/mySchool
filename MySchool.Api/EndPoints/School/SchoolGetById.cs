@@ -1,5 +1,4 @@
-﻿using MySchool.Command.School.Handlers;
-using MySchool.ReadModel.School.Handlers;
+﻿using MySchool.ReadModel.School.Handlers;
 
 namespace MySchool.Api.EndPoints.School
 {

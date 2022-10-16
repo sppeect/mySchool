@@ -1,4 +1,5 @@
-﻿using MySchool.Domain.Entities.School;
+﻿using MySchool.Common.Entities;
+using MySchool.Domain.Entities.School;
 using MySchool.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MySchool.Domain.Entities.Teacher
 {
-    public class Teachers
+    public class Teachers : Entity
     {
         public Teachers() { }
         public Teachers(int id)
@@ -16,11 +17,14 @@ namespace MySchool.Domain.Entities.Teacher
             Id = id;
         }
 
-        public Teachers(string firstName, string lastName, Document document, Email email)
+        public Teachers(Name name, Document document, Email email)
         {
-            Name = new Name(firstName, lastName);
+            Name = name;
             Document = document;
             Email = email;
+
+            CreatedOn =  DateTime.Now;
+            UpdatedOn =  DateTime.Now;
         }
 
         public int Id { get; set; }
@@ -28,6 +32,20 @@ namespace MySchool.Domain.Entities.Teacher
         public Document Document { get; set; }
         public Email Email { get; set; }
         
+
+        public void Update(Name name, Document document, Email email)
+        {
+            Name = name;
+            Document = document;
+            Email = email;
+
+            UpdatedOn = DateTime.Now;
+        }
+
+        public void Delete()
+        {
+            DeletedOn = DateTime.Now;
+        }
 
     }
 }

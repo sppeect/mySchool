@@ -4,19 +4,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MySchool.Command.Security.Request;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MySchool.Command.Security.Handlers
 {
     public class SecurityHandler
     {
-        [AllowAnonymous]
+        
         public static IResult Action(LoginRequest loginRequest, IConfiguration configuration, UserManager<IdentityUser> userManager)
         {
             var user = userManager.FindByEmailAsync(loginRequest.Email).Result;
