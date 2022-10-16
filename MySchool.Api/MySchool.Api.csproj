@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="EndPoints\Teacher\3f5oobie.z3w~" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Flunt" Version="2.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Core" Version="2.2.0" />
@@ -44,6 +40,7 @@
 
   <ItemGroup>
     <Folder Include="EndPoints\Students\" />
+    <Folder Include="EndPoints\Teacher\" />
   </ItemGroup>
 
 </Project>

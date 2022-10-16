@@ -23,6 +23,9 @@
     <Folder Include="Students\Handlers\" />
     <Folder Include="Students\Request\" />
     <Folder Include="Students\Response\" />
+    <Folder Include="Teacher\Handlers\" />
+    <Folder Include="Teacher\Request\" />
+    <Folder Include="Teacher\Response\" />
   </ItemGroup>
 
   <ItemGroup>

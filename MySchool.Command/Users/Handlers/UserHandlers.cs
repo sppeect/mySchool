@@ -9,6 +9,7 @@ namespace MySchool.Command.Users.Handlers
 {
     public class UserHandlers
     {
+        [AllowAnonymous]
         public static async Task<IResult> ActionPost(UserManager<IdentityUser> userManager, UserRequest userRequest )
         {
             var user = new IdentityUser { UserName = userRequest.UserName, Email = userRequest.Email };

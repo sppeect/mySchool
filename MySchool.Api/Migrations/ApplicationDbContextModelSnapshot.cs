@@ -438,15 +438,6 @@ namespace MySchool.Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime");
-
                     b.HasKey("Id");
 
                     b.ToTable("Teachers");

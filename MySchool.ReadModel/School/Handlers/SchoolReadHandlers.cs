@@ -5,11 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using MySchool.ReadModel.School.Response;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MySchool.ReadModel.School.Handlers
 {
     public class SchoolReadHandlers
     {
+        [AllowAnonymous]
         public static async Task<IResult> ActionGetAll(IConfiguration configuration)
         {
             var query = @"SELECT 
@@ -39,6 +45,8 @@ namespace MySchool.ReadModel.School.Handlers
 
             return Results.Ok(schools);
         }
+
+        [AllowAnonymous]
         public static async Task<IResult> ActionGetById([FromRoute] int Id, IConfiguration configuration)
         {
             var query = @"SELECT 
