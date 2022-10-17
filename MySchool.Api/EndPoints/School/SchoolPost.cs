@@ -8,6 +8,6 @@ namespace MySchool.Api.EndPoints.School
     {
         public static string Template => "v1/school";
         public static string[] Methods => new string[] {HttpMethod.Post.ToString() };
-        public static Delegate Handle => SchoolHandlers.ActionPost;
+        public static Delegate Handle => SchoolHandlers.SchoolPost;
     }
 }

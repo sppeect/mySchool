@@ -9,6 +9,7 @@ namespace MySchool.Api.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            
             migrationBuilder.AddColumn<DateTime>(
                 name: "CreatedOn",
                 table: "Teachers",

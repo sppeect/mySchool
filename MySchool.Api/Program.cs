@@ -138,6 +138,11 @@ app.MapMethods(SchoolGetAll.Template, SchoolGetAll.Methods, SchoolGetAll.Handle)
 app.MapMethods(SchoolGetById.Template, SchoolGetById.Methods, SchoolGetById.Handle).RequireAuthorization().WithTags("Schools");
 app.MapMethods(SchoolPut.Template, SchoolPut.Methods, SchoolPut.Handle).RequireAuthorization().WithTags("Schools");
 app.MapMethods(SchoolDelete.Template, SchoolDelete.Methods, SchoolDelete.Handle).RequireAuthorization().WithTags("Schools");
+
+
+#region ClassRoom
+app.MapMethods(ClassRoomPost.Template, ClassRoomPost.Methods, ClassRoomPost.Handle).RequireAuthorization().WithTags("Schools");
+#endregion
 #endregion
 
 #region Teacher

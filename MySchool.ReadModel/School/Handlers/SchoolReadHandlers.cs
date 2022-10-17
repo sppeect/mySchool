@@ -10,7 +10,7 @@ namespace MySchool.ReadModel.School.Handlers
 {
     public class SchoolReadHandlers
     {
-        public static async Task<IResult> ActionGetAll(IConfiguration configuration)
+        public static async Task<IResult> SchoolGetAll(IConfiguration configuration)
         {
             var query = @"SELECT 
                         s.[Id]
@@ -39,7 +39,7 @@ namespace MySchool.ReadModel.School.Handlers
 
             return Results.Ok(schools);
         }
-        public static async Task<IResult> ActionGetById([FromRoute] int Id, IConfiguration configuration)
+        public static async Task<IResult> SchoolGetById([FromRoute] int Id, IConfiguration configuration)
         {
             var query = @"SELECT 
                         s.[Id]

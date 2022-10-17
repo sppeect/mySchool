@@ -6,6 +6,6 @@ namespace MySchool.Api.EndPoints.School
     {
         public static string Template => "v1/school/{Id:int}";
         public static string[] Methods => new string[] { HttpMethod.Delete.ToString() };
-        public static Delegate Handle => SchoolHandlers.ActionDelete;
+        public static Delegate Handle => SchoolHandlers.SchoolDelete;
     }
 }

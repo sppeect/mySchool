@@ -277,9 +277,6 @@ namespace MySchool.Api.Migrations
                     b.Property<int>("TypesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TypesName")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime");
 

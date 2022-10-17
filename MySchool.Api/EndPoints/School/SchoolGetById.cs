@@ -6,6 +6,6 @@ namespace MySchool.Api.EndPoints.School
     {
         public static string Template => "v1/school/{Id:int}";
         public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
-        public static Delegate Handle => SchoolReadHandlers.ActionGetById;
+        public static Delegate Handle => SchoolReadHandlers.SchoolGetById;
     }
 }

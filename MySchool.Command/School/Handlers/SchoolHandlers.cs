@@ -9,7 +9,7 @@ namespace MySchool.Command.School.Handlers
 {
     public class SchoolHandlers
     {
-        public static async Task<IResult> ActionPost(SchoolRequest schoolRequest, ApplicationDbContext context)
+        public static async Task<IResult> SchoolPost(SchoolRequest schoolRequest, ApplicationDbContext context)
         {
             var schoolExist = context.Schools.Where(x => x.Name == schoolRequest.Name && x.DeletedOn == null).FirstOrDefault();
 
@@ -37,7 +37,7 @@ namespace MySchool.Command.School.Handlers
             return Results.Created($"/schools/{school.Id}", school.Id);
 
         }
-        public static async Task<IResult> ActionPut([FromRoute] int Id, SchoolRequest schoolRequest, ApplicationDbContext context)
+        public static async Task<IResult> SchoolPut([FromRoute] int Id, SchoolRequest schoolRequest, ApplicationDbContext context)
         {
             var schoolExist = context.Schools.Where(x => x.Id == Id && x.DeletedOn == null).FirstOrDefault();
 
@@ -62,7 +62,7 @@ namespace MySchool.Command.School.Handlers
             return Results.Ok("Escola Atualizada com Sucesso!");
 
         }
-        public static async Task<IResult> ActionDelete([FromRoute] int Id, ApplicationDbContext context)
+        public static async Task<IResult> SchoolDelete([FromRoute] int Id, ApplicationDbContext context)
         {
             var schoolExist = context.Schools.Where(x => x.Id == Id && x.DeletedOn == null).FirstOrDefault();
 
@@ -73,6 +73,29 @@ namespace MySchool.Command.School.Handlers
             await context.SaveChangesAsync();
 
             return Results.Ok("Escola deletada com Sucesso!");
+
+        }
+
+        public static async Task<IResult> ClassRoomPost(ClassRoomRequest classRoomRequest, ApplicationDbContext context)
+        {
+           var classRoomExist = context.ClassRoom.Where(x => x.Name == classRoomRequest.Name).FirstOrDefault();
+           if (classRoomExist != null)
+                return Results.BadRequest("Sala de aula existente.");
+
+            var types = context.ClassTypes.Where(x => x.Id == classRoomRequest.TypesId).FirstOrDefault();
+            if (types == null)
+                return Results.BadRequest("Matéria não encontrada.");
+
+            var school = context.Schools.Where(x => x.Id == classRoomRequest.SchoolId && x.DeletedOn == null).FirstOrDefault();
+            if (school == null)
+                return Results.BadRequest("Escola não encontrada.");
+
+            var classRoom = new ClassRoom(classRoomRequest.Name, types, classRoomRequest.StarDate, classRoomRequest.EndDate, school);
+
+           await context.AddAsync(classRoom);
+           await context.SaveChangesAsync();
+                  
+            return Results.Ok("Sala de aula adicionada com sucesso!");
 
         }
 
