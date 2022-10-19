@@ -18,7 +18,7 @@ namespace MySchool.Command.School.Handlers
 
             var address = new Address(schoolRequest.Street, schoolRequest.Number, schoolRequest.Neighborhood, schoolRequest.City, schoolRequest.State, schoolRequest.Country, schoolRequest.ZipCode);
             if (!address.IsValid)
-                return Results.BadRequest("O endereço está incorreto ou com formato não apropriado." + address.Notifications);
+                return Results.BadRequest("O endereço está incorreto ou com formato não apropriado.");
 
             var document = new Document(schoolRequest.Document, schoolRequest.DocumentType);
             if (!document.IsValid)

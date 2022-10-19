@@ -1,0 +1,33 @@
+
+.content {
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+
+    position: absolute;
+    top: 120px;
+    left: 350px;
+
+    h2 {
+        color: #9777b3;
+    }
+
+    .school {
+        .heading {
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+            button {
+                width: 160px;
+                height: 50px;
+
+                color: #fff;
+                background: #9777b3;
+                border-radius: 15px;
+                border: none;
+
+                cursor: pointer;
+            }
+        }
+    }
+}
